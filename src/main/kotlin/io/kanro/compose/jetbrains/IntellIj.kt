@@ -73,9 +73,8 @@ fun JBThemeFromIntelliJ(
 
 @Composable
 fun isIntelliJThemeDark(): Boolean {
+    val color = swingColor("Panel.background") ?: Color.White
     return remember(SwingColor.themeChangeState) {
-        val color = swingColor("Panel.background") ?: Color.White
-
         val brightness = with(color) {
             sqrt(
                 red * red * .241f +
