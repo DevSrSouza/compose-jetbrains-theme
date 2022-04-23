@@ -95,152 +95,196 @@ fun swingColor(vararg key: String): Color? {
     }
 }
 
-@Composable fun intellijButtonColor() = ButtonColors(
-    bg = swingColor("Button.default.startBackground")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).bg, // TODO: this will always exist?
-    border = swingColor("Button.default.startBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).border, // TODO: this will always exist?
-    borderRegularFocused = swingColor("ActionButton.focusedBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).borderRegularFocused, //TODO: check this one
-    defaultStart = swingColor("Button.default.startBackground")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).defaultStart,
-    defaultEnd = swingColor("Button.default.endBackground")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).defaultEnd,
-    borderDefaultStart = swingColor("Button.default.startBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).borderDefaultStart,
-    borderDefaultEnd = swingColor("Button.default.endBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).borderDefaultEnd,
-    borderDefaultFocused = swingColor("Button.default.focusedBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).borderDefaultFocused,
-    bgDisabled = swingColor("Button.default.startBackground")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).bgDisabled, // TODO: don't know this one, will use Button.default.startBackground for now
-    borderDisabled = swingColor("Button.disabledBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()).borderDisabled,
-)
+@Composable fun intellijButtonColor(): ButtonColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()
 
-@Composable fun intellijFieldColor() = FieldColors(
-    bg = swingColor("TextField.background")
-        ?: (if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()).bg,
-    border = swingColor("Component.borderColor", "TextField.borderColor")
-        ?: (if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()).border,
-    borderFocused = swingColor("Component.focusedBorderColor", "Button.focusedBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()).borderFocused,
-    comboboxButton = swingColor("ComboBoxButton.background")
-        ?: (if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()).comboboxButton,
-    bgDisabled = swingColor("TextField.disabledBackground", "ComboBox.disabledBackground")
-        ?: (if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()).bgDisabled,
-    borderDisabled = swingColor("Component.disabledBorderColor", "Button.disabledBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()).borderDisabled,
-    borderError = swingColor("Component.errorFocusColor")
-        ?: (if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()).borderError, // TODO: try a better one?
-)
+    return ButtonColors(
+        bg = swingColor("Button.default.startBackground")
+            ?: fallbackColors.bg, // TODO: this will always exist?
+        border = swingColor("Button.default.startBorderColor")
+            ?: fallbackColors.border, // TODO: this will always exist?
+        borderRegularFocused = swingColor("ActionButton.focusedBorderColor")
+            ?: fallbackColors.borderRegularFocused, //TODO: check this one
+        defaultStart = swingColor("Button.default.startBackground")
+            ?: fallbackColors.defaultStart,
+        defaultEnd = swingColor("Button.default.endBackground")
+            ?: fallbackColors.defaultEnd,
+        borderDefaultStart = swingColor("Button.default.startBorderColor")
+            ?: fallbackColors.borderDefaultStart,
+        borderDefaultEnd = swingColor("Button.default.endBorderColor")
+            ?: fallbackColors.borderDefaultEnd,
+        borderDefaultFocused = swingColor("Button.default.focusedBorderColor")
+            ?: fallbackColors.borderDefaultFocused,
+        bgDisabled = swingColor("Button.default.startBackground")
+            ?: fallbackColors.bgDisabled, // TODO: don't know this one, will use Button.default.startBackground for now
+        borderDisabled = swingColor("Button.disabledBorderColor")
+            ?: fallbackColors.borderDisabled,
+    )
+}
 
-@Composable fun intellijFocusColor() = FocusColors(
-    default = swingColor("Component.focusColor", "Focus.color")
-        ?: (if(isIntelliJThemeDark()) darkFocusColors() else lightFocusColors()).default,
-    error = swingColor("Component.errorFocusColor")
-        ?: (if(isIntelliJThemeDark()) darkFocusColors() else lightFocusColors()).error,
-    warning = swingColor("Component.warningFocusColor")
-        ?: (if(isIntelliJThemeDark()) darkFocusColors() else lightFocusColors()).warning,
-    warningInactive = swingColor("Component.inactiveWarningFocusColor")
-        ?: (if(isIntelliJThemeDark()) darkFocusColors() else lightFocusColors()).warningInactive,
-)
+@Composable fun intellijFieldColor(): FieldColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()
+    return FieldColors(
+        bg = swingColor("TextField.background")
+            ?: fallbackColors.bg,
+        border = swingColor("Component.borderColor", "TextField.borderColor")
+            ?: fallbackColors.border,
+        borderFocused = swingColor("Component.focusedBorderColor", "Button.focusedBorderColor")
+            ?: fallbackColors.borderFocused,
+        comboboxButton = swingColor("ComboBoxButton.background")
+            ?: fallbackColors.comboboxButton,
+        bgDisabled = swingColor("TextField.disabledBackground", "ComboBox.disabledBackground")
+            ?: fallbackColors.bgDisabled,
+        borderDisabled = swingColor("Component.disabledBorderColor", "Button.disabledBorderColor")
+            ?: fallbackColors.borderDisabled,
+        borderError = swingColor("Component.errorFocusColor")
+            ?: fallbackColors.borderError, // TODO: try a better one?
+    )
+}
 
-@Composable fun intellijPanelColors() = PanelColors(
-    border = swingColor("ColorPalette.border", "Borders.color", "Panel.background")
-        ?: (if(isIntelliJThemeDark()) darkPanelColors() else lightPanelColors()).border,
-    bgContent = swingColor("ColorPalette.contentBackground", "List.background", "EditorPane.background")
-        ?: (if(isIntelliJThemeDark()) darkPanelColors() else lightPanelColors()).bgContent,
-    bgDialog = swingColor("PopupMenu.background", "Panel.background", "OptionPane.background")
-        ?: (if(isIntelliJThemeDark()) darkPanelColors() else lightPanelColors()).bgDialog,
-)
+@Composable fun intellijFocusColor(): FocusColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkFocusColors() else lightFocusColors()
 
-@Composable fun intellijTextColors() = TextColors(
-    default = swingColor("Label.foreground")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).default,
-    disabled = swingColor("Label.disabledForeground", "Label.disabledText", "Button.disabledText")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).disabled,
-    white = swingColor("ColorPalette.white", "TextField.light", "Button.light")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).white,
-    link = swingColor("Link.activeForeground", "ColorPalette.linkForeground")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).link,
-    infoPanel = swingColor("Label.infoForeground", "ColorPalette.infoPanelForeground")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).infoPanel,
-    infoInput = swingColor("Component.infoForeground", "ColorPalette.separatorForeground")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).infoInput, // TODO: any better for this one?
-    error = swingColor("Label.errorForeground", "Notification.errorForeground")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).error,
-    success = swingColor("Label.successForeground")
-        ?: (if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()).success,
-)
+    return FocusColors(
+        default = swingColor("Component.focusColor", "Focus.color")
+            ?: fallbackColors.default,
+        error = swingColor("Component.errorFocusColor")
+            ?: fallbackColors.error,
+        warning = swingColor("Component.warningFocusColor")
+            ?: fallbackColors.warning,
+        warningInactive = swingColor("Component.inactiveWarningFocusColor")
+            ?: fallbackColors.warningInactive,
+    )
+}
 
-@Composable fun intellijToolbarColors() = ToolBarColors(
-    buttonHover = swingColor("ActionButton.hoverBackground")
-        ?: (if(isIntelliJThemeDark()) darkToolBarColors() else lightToolBarColors()).buttonHover,
-    buttonPressed = swingColor("ActionButton.pressedBackground")
-        ?: (if(isIntelliJThemeDark()) darkToolBarColors() else lightToolBarColors()).buttonPressed,
-    iconSplitBorder = swingColor("ActionButton.hoverBackground")
-        ?: (if(isIntelliJThemeDark()) darkToolBarColors() else lightToolBarColors()).iconSplitBorder, // TODO: don't know what should I use here
-)
+@Composable fun intellijPanelColors(): PanelColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkPanelColors() else lightPanelColors()
 
-@Composable fun intellijProgressColor() = ProgressColors(
-    progress = swingColor("ProgressBar.progressColor")
-        ?: (if(isIntelliJThemeDark()) darkProgressColors() else lightProgressColors()).progress,
-    bg = swingColor("ProgressBar.background")
-        ?: (if(isIntelliJThemeDark()) darkProgressColors() else lightProgressColors()).bg,
-)
+    return PanelColors(
+        border = swingColor("ColorPalette.border", "Borders.color", "Panel.background")
+            ?: fallbackColors.border,
+        bgContent = swingColor("ColorPalette.contentBackground", "List.background", "EditorPane.background")
+            ?: fallbackColors.bgContent,
+        bgDialog = swingColor("PopupMenu.background", "Panel.background", "OptionPane.background")
+            ?: fallbackColors.bgDialog,
+    )
+}
 
-@Composable fun intellijScrollColors() = ScrollColors(
-    bg = swingColor("ScrollBar.background")
-        ?: (if(isIntelliJThemeDark()) darkScrollColors() else lightScrollColors()).bg
-)
+@Composable fun intellijTextColors(): TextColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()
 
-@Composable fun intellijTabColors() = TabColors(
-    selection = swingColor("DefaultTabs.underlineColor", "TabbedPane.underlineColor")
-        ?: (if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()).selection,
-    focus = swingColor("TabbedPane.focusColor")
-        ?: (if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()).focus,
-    selectionInactive = swingColor("DefaultTabs.inactiveUnderlineColor")
-        ?: (if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()).selectionInactive,
-    hover = swingColor("DefaultTabs.hoverBackground")?.copy(alpha = .25f)
-        ?: (if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()).hover,
-    selectionDisabled = swingColor("TabbedPane.disabledUnderlineColor")
-        ?: (if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()).selectionDisabled,
-    bgSelected = swingColor("TabbedPane.highlight", "controlHighlight")
-        ?: (if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()).bgSelected,
-)
+    return TextColors(
+        default = swingColor("Label.foreground")
+            ?: fallbackColors.default,
+        disabled = swingColor("Label.disabledForeground", "Label.disabledText", "Button.disabledText")
+            ?: fallbackColors.disabled,
+        white = swingColor("ColorPalette.white", "TextField.light", "Button.light")
+            ?: fallbackColors.white,
+        link = swingColor("Link.activeForeground", "ColorPalette.linkForeground")
+            ?: fallbackColors.link,
+        infoPanel = swingColor("Label.infoForeground", "ColorPalette.infoPanelForeground")
+            ?: fallbackColors.infoPanel,
+        infoInput = swingColor("Component.infoForeground", "ColorPalette.separatorForeground")
+            ?: fallbackColors.infoInput, // TODO: any better for this one?
+        error = swingColor("Label.errorForeground", "Notification.errorForeground")
+            ?: fallbackColors.error,
+        success = swingColor("Label.successForeground")
+            ?: fallbackColors.success,
+    )
+}
 
-@Composable fun intellijSelectionColors() = SelectionColors(
-    active = swingColor("Table.selectionBackground", "List.selectionBackground")
-        ?: (if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()).active,
-    inactive = swingColor("Table.hoverInactiveBackground")
-        ?: (if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()).inactive,
-    hover = swingColor("Table.hoverBackground", "List.hoverBackground", "Tree.hoverBackground")
-        ?: (if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()).hover,
-    lightActive = swingColor("Table.lightSelectionBackground", "Plugins.lightSelectionBackground")
-        ?: (if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()).lightActive,
-    lightInactive = swingColor("Table.lightSelectionInactiveBackground")
-        ?: (if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()).lightInactive,
-    completionPopup = swingColor("CompletionPopup.selectionBackground")
-        ?: (if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()).completionPopup,
-)
+@Composable fun intellijToolbarColors(): ToolBarColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkToolBarColors() else lightToolBarColors()
 
-@Composable fun intellijCheckboxColors() = CheckBoxColors(
-    bg = swingColor("ComboBox.background")
-        ?: (if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()).bg,
-    bgSelected = swingColor("ComboBox.selectionBackground")
-        ?: (if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()).bgSelected,
-    bgDisabled = swingColor("ComboBox.disabledBackground")
-        ?: (if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()).bgDisabled,
-    border = swingColor("Borders.color")
-        ?: (if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()).border, // dont know
-    borderSelected = swingColor("ComboBox.selectionBackground")
-        ?: (if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()).borderSelected, // dont know
-    borderFocused = swingColor("ComboBox.selectionBackground")
-        ?: (if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()).borderFocused,
-    borderDisabled = swingColor("Component.disabledBorderColor")
-        ?: (if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()).borderDisabled,
-)
+    return ToolBarColors(
+        buttonHover = swingColor("ActionButton.hoverBackground")
+            ?: fallbackColors.buttonHover,
+        buttonPressed = swingColor("ActionButton.pressedBackground")
+            ?: fallbackColors.buttonPressed,
+        iconSplitBorder = swingColor("ActionButton.hoverBackground")
+            ?: fallbackColors.iconSplitBorder, // TODO: don't know what should I use here
+    )
+}
+
+@Composable fun intellijProgressColor(): ProgressColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkProgressColors() else lightProgressColors()
+
+    return ProgressColors(
+        progress = swingColor("ProgressBar.progressColor")
+            ?: fallbackColors.progress,
+        bg = swingColor("ProgressBar.background")
+            ?: fallbackColors.bg,
+    )
+}
+
+@Composable fun intellijScrollColors(): ScrollColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkScrollColors() else lightScrollColors()
+
+    return ScrollColors(
+        bg = swingColor("ScrollBar.background")
+            ?: fallbackColors.bg
+    )
+}
+
+@Composable fun intellijTabColors(): TabColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()
+
+    return TabColors(
+        selection = swingColor("DefaultTabs.underlineColor", "TabbedPane.underlineColor")
+            ?: fallbackColors.selection,
+        focus = swingColor("TabbedPane.focusColor")
+            ?: fallbackColors.focus,
+        selectionInactive = swingColor("DefaultTabs.inactiveUnderlineColor")
+            ?: fallbackColors.selectionInactive,
+        hover = swingColor("DefaultTabs.hoverBackground")?.copy(alpha = .25f)
+            ?: fallbackColors.hover,
+        selectionDisabled = swingColor("TabbedPane.disabledUnderlineColor")
+            ?: fallbackColors.selectionDisabled,
+        bgSelected = swingColor("TabbedPane.highlight", "controlHighlight")
+            ?: fallbackColors.bgSelected,
+    )
+}
+
+
+@Composable fun intellijSelectionColors(): SelectionColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()
+
+    return SelectionColors(
+        active = swingColor("Table.selectionBackground", "List.selectionBackground")
+            ?: fallbackColors.active,
+        inactive = swingColor("Table.hoverInactiveBackground")
+            ?: fallbackColors.inactive,
+        hover = swingColor("Table.hoverBackground", "List.hoverBackground", "Tree.hoverBackground")
+            ?: fallbackColors.hover,
+        lightActive = swingColor("Table.lightSelectionBackground", "Plugins.lightSelectionBackground")
+            ?: fallbackColors.lightActive,
+        lightInactive = swingColor("Table.lightSelectionInactiveBackground")
+            ?: fallbackColors.lightInactive,
+        completionPopup = swingColor("CompletionPopup.selectionBackground")
+            ?: fallbackColors.completionPopup,
+    )
+}
+
+@Composable fun intellijCheckboxColors(): CheckBoxColors {
+    val fallbackColors = if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()
+
+    return CheckBoxColors(
+        bg = swingColor("ComboBox.background")
+            ?: fallbackColors.bg,
+        bgSelected = swingColor("ComboBox.selectionBackground")
+            ?: fallbackColors.bgSelected,
+        bgDisabled = swingColor("ComboBox.disabledBackground")
+            ?: fallbackColors.bgDisabled,
+        border = swingColor("Borders.color")
+            ?: fallbackColors.border, // dont know
+        borderSelected = swingColor("ComboBox.selectionBackground")
+            ?: fallbackColors.borderSelected, // dont know
+        borderFocused = swingColor("ComboBox.selectionBackground")
+            ?: fallbackColors.borderFocused,
+        borderDisabled = swingColor("Component.disabledBorderColor")
+            ?: fallbackColors.borderDisabled,
+    )
+}
 
 @Composable fun intellijIconColors() = IconColors(
     selected = swingColor("Component.iconColor") ?: lightIconColors().selected,
