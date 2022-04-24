@@ -1,48 +1,47 @@
 package io.kanro.compose.jetbrains
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import io.kanro.compose.jetbrains.color.ButtonColors
-import io.kanro.compose.jetbrains.color.lightButtonColors
-import io.kanro.compose.jetbrains.color.darkButtonColors
-import io.kanro.compose.jetbrains.color.CheckBoxColors
-import io.kanro.compose.jetbrains.color.lightCheckBoxColors
-import io.kanro.compose.jetbrains.color.darkCheckBoxColors
-import io.kanro.compose.jetbrains.color.FieldColors
-import io.kanro.compose.jetbrains.color.lightFieldColors
-import io.kanro.compose.jetbrains.color.darkFieldColors
-import io.kanro.compose.jetbrains.color.FocusColors
-import io.kanro.compose.jetbrains.color.lightFocusColors
-import io.kanro.compose.jetbrains.color.darkFocusColors
-import io.kanro.compose.jetbrains.color.IconColors
-import io.kanro.compose.jetbrains.color.PanelColors
-import io.kanro.compose.jetbrains.color.lightPanelColors
-import io.kanro.compose.jetbrains.color.darkPanelColors
-import io.kanro.compose.jetbrains.color.ProgressColors
-import io.kanro.compose.jetbrains.color.lightProgressColors
-import io.kanro.compose.jetbrains.color.darkProgressColors
-import io.kanro.compose.jetbrains.color.ScrollColors
-import io.kanro.compose.jetbrains.color.lightScrollColors
-import io.kanro.compose.jetbrains.color.darkScrollColors
-import io.kanro.compose.jetbrains.color.SelectionColors
-import io.kanro.compose.jetbrains.color.lightSelectionColors
-import io.kanro.compose.jetbrains.color.darkSelectionColors
-import io.kanro.compose.jetbrains.color.TabColors
-import io.kanro.compose.jetbrains.color.lightTabColors
-import io.kanro.compose.jetbrains.color.darkTabColors
-import io.kanro.compose.jetbrains.color.TextColors
-import io.kanro.compose.jetbrains.color.lightTextColors
-import io.kanro.compose.jetbrains.color.darkTextColors
-import io.kanro.compose.jetbrains.color.ToolBarColors
-import io.kanro.compose.jetbrains.color.lightToolBarColors
-import io.kanro.compose.jetbrains.color.darkToolBarColors
-import javax.swing.UIManager
-import java.awt.Color as AWTColor
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import io.kanro.compose.jetbrains.color.ButtonColors
+import io.kanro.compose.jetbrains.color.CheckBoxColors
+import io.kanro.compose.jetbrains.color.FieldColors
+import io.kanro.compose.jetbrains.color.FocusColors
+import io.kanro.compose.jetbrains.color.IconColors
+import io.kanro.compose.jetbrains.color.PanelColors
+import io.kanro.compose.jetbrains.color.ProgressColors
+import io.kanro.compose.jetbrains.color.ScrollColors
+import io.kanro.compose.jetbrains.color.SelectionColors
+import io.kanro.compose.jetbrains.color.TabColors
+import io.kanro.compose.jetbrains.color.TextColors
+import io.kanro.compose.jetbrains.color.ToolBarColors
+import io.kanro.compose.jetbrains.color.darkButtonColors
+import io.kanro.compose.jetbrains.color.darkCheckBoxColors
+import io.kanro.compose.jetbrains.color.darkFieldColors
+import io.kanro.compose.jetbrains.color.darkFocusColors
+import io.kanro.compose.jetbrains.color.darkPanelColors
+import io.kanro.compose.jetbrains.color.darkProgressColors
+import io.kanro.compose.jetbrains.color.darkScrollColors
+import io.kanro.compose.jetbrains.color.darkSelectionColors
+import io.kanro.compose.jetbrains.color.darkTabColors
+import io.kanro.compose.jetbrains.color.darkTextColors
+import io.kanro.compose.jetbrains.color.darkToolBarColors
+import io.kanro.compose.jetbrains.color.lightButtonColors
+import io.kanro.compose.jetbrains.color.lightCheckBoxColors
+import io.kanro.compose.jetbrains.color.lightFieldColors
+import io.kanro.compose.jetbrains.color.lightFocusColors
 import io.kanro.compose.jetbrains.color.lightIconColors
+import io.kanro.compose.jetbrains.color.lightPanelColors
+import io.kanro.compose.jetbrains.color.lightProgressColors
+import io.kanro.compose.jetbrains.color.lightScrollColors
+import io.kanro.compose.jetbrains.color.lightSelectionColors
+import io.kanro.compose.jetbrains.color.lightTabColors
+import io.kanro.compose.jetbrains.color.lightTextColors
+import io.kanro.compose.jetbrains.color.lightToolBarColors
+import javax.swing.UIManager
 import kotlin.math.sqrt
 import kotlin.random.Random
 
@@ -74,6 +73,7 @@ fun JBThemeFromIntelliJ(
 @Composable
 fun isIntelliJThemeDark(): Boolean {
     val color = swingColor("Panel.background") ?: Color.White
+
     return remember(SwingColor.themeChangeState) {
         val brightness = with(color) {
             sqrt(
@@ -94,7 +94,8 @@ fun swingColor(vararg key: String): Color? {
     }
 }
 
-@Composable fun intellijButtonColor(): ButtonColors {
+@Composable
+fun intellijButtonColor(): ButtonColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkButtonColors() else lightButtonColors()
 
     return ButtonColors(
@@ -121,7 +122,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijFieldColor(): FieldColors {
+@Composable
+fun intellijFieldColor(): FieldColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkFieldColors() else lightFieldColors()
     return FieldColors(
         bg = swingColor("TextField.background")
@@ -141,7 +143,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijFocusColor(): FocusColors {
+@Composable
+fun intellijFocusColor(): FocusColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkFocusColors() else lightFocusColors()
 
     return FocusColors(
@@ -156,7 +159,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijPanelColors(): PanelColors {
+@Composable
+fun intellijPanelColors(): PanelColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkPanelColors() else lightPanelColors()
 
     return PanelColors(
@@ -169,7 +173,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijTextColors(): TextColors {
+@Composable
+fun intellijTextColors(): TextColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkTextColors() else lightTextColors()
 
     return TextColors(
@@ -192,7 +197,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijToolbarColors(): ToolBarColors {
+@Composable
+fun intellijToolbarColors(): ToolBarColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkToolBarColors() else lightToolBarColors()
 
     return ToolBarColors(
@@ -205,7 +211,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijProgressColor(): ProgressColors {
+@Composable
+fun intellijProgressColor(): ProgressColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkProgressColors() else lightProgressColors()
 
     return ProgressColors(
@@ -216,7 +223,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijScrollColors(): ScrollColors {
+@Composable
+fun intellijScrollColors(): ScrollColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkScrollColors() else lightScrollColors()
 
     return ScrollColors(
@@ -225,7 +233,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijTabColors(): TabColors {
+@Composable
+fun intellijTabColors(): TabColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkTabColors() else lightTabColors()
 
     return TabColors(
@@ -245,7 +254,8 @@ fun swingColor(vararg key: String): Color? {
 }
 
 
-@Composable fun intellijSelectionColors(): SelectionColors {
+@Composable
+fun intellijSelectionColors(): SelectionColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkSelectionColors() else lightSelectionColors()
 
     return SelectionColors(
@@ -264,7 +274,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijCheckboxColors(): CheckBoxColors {
+@Composable
+fun intellijCheckboxColors(): CheckBoxColors {
     val fallbackColors = if(isIntelliJThemeDark()) darkCheckBoxColors() else lightCheckBoxColors()
 
     return CheckBoxColors(
@@ -285,7 +296,8 @@ fun swingColor(vararg key: String): Color? {
     )
 }
 
-@Composable fun intellijIconColors() = IconColors(
+@Composable
+fun intellijIconColors() = IconColors(
     selected = swingColor("Component.iconColor") ?: lightIconColors().selected,
     disabled = swingColor("Button.disabledBorderColor") ?: lightIconColors().disabled, // TODO have no idea
 )
@@ -299,4 +311,4 @@ object SwingColor {
     }
 }
 
-private val AWTColor.asComposeColor: Color get() = Color(red, green, blue, alpha)
+private val java.awt.Color.asComposeColor: Color get() = Color(red, green, blue, alpha)
