@@ -47,6 +47,7 @@ import kotlin.random.Random
 
 @Composable
 fun JBThemeFromIntelliJ(
+    typography: JBTypography = JBTheme.typography,
     content: @Composable () -> Unit
 ) {
     JBTheme(
@@ -62,7 +63,7 @@ fun JBThemeFromIntelliJ(
         selectionColors = intellijSelectionColors(),
         checkBoxColors = intellijCheckboxColors(),
         iconColors = intellijIconColors(),
-        typography = JBTheme.typography,
+        typography = typography,
         iconTheme = JBTheme.iconTheme,
         selectionScope = LocalSelectionScope.current,
     ) {
