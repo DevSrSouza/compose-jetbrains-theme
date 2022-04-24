@@ -101,11 +101,11 @@ fun intellijButtonColor(): ButtonColors {
 
     return ButtonColors(
         bg = swingColor("Button.default.startBackground")
-            ?: fallbackColors.bg, // TODO: this will always exist?
+            ?: fallbackColors.bg,
         border = swingColor("Button.default.startBorderColor")
-            ?: fallbackColors.border, // TODO: this will always exist?
+            ?: fallbackColors.border,
         borderRegularFocused = swingColor("ActionButton.focusedBorderColor")
-            ?: fallbackColors.borderRegularFocused, //TODO: check this one
+            ?: fallbackColors.borderRegularFocused,
         defaultStart = swingColor("Button.default.startBackground")
             ?: fallbackColors.defaultStart,
         defaultEnd = swingColor("Button.default.endBackground")
@@ -117,7 +117,7 @@ fun intellijButtonColor(): ButtonColors {
         borderDefaultFocused = swingColor("Button.default.focusedBorderColor")
             ?: fallbackColors.borderDefaultFocused,
         bgDisabled = swingColor("Button.default.startBackground")
-            ?: fallbackColors.bgDisabled, // TODO: don't know this one, will use Button.default.startBackground for now
+            ?: fallbackColors.bgDisabled,
         borderDisabled = swingColor("Button.disabledBorderColor")
             ?: fallbackColors.borderDisabled,
     )
@@ -140,7 +140,7 @@ fun intellijFieldColor(): FieldColors {
         borderDisabled = swingColor("Component.disabledBorderColor", "Button.disabledBorderColor")
             ?: fallbackColors.borderDisabled,
         borderError = swingColor("Component.errorFocusColor")
-            ?: fallbackColors.borderError, // TODO: try a better one?
+            ?: fallbackColors.borderError,
     )
 }
 
@@ -190,7 +190,7 @@ fun intellijTextColors(): TextColors {
         infoPanel = swingColor("Label.infoForeground", "ColorPalette.infoPanelForeground")
             ?: fallbackColors.infoPanel,
         infoInput = swingColor("Component.infoForeground", "ColorPalette.separatorForeground")
-            ?: fallbackColors.infoInput, // TODO: any better for this one?
+            ?: fallbackColors.infoInput,
         error = swingColor("Label.errorForeground", "Notification.errorForeground")
             ?: fallbackColors.error,
         success = swingColor("Label.successForeground")
@@ -208,7 +208,7 @@ fun intellijToolbarColors(): ToolBarColors {
         buttonPressed = swingColor("ActionButton.pressedBackground")
             ?: fallbackColors.buttonPressed,
         iconSplitBorder = swingColor("ActionButton.hoverBackground")
-            ?: fallbackColors.iconSplitBorder, // TODO: don't know what should I use here
+            ?: fallbackColors.iconSplitBorder,
     )
 }
 
@@ -300,7 +300,7 @@ fun intellijCheckboxColors(): CheckBoxColors {
 @Composable
 fun intellijIconColors() = IconColors(
     selected = swingColor("Component.iconColor") ?: lightIconColors().selected,
-    disabled = swingColor("Button.disabledBorderColor") ?: lightIconColors().disabled, // TODO have no idea
+    disabled = swingColor("Button.disabledBorderColor") ?: lightIconColors().disabled,
 )
 
 object SwingColor {
