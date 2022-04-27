@@ -12,6 +12,6 @@ fun JBTheme.contentColorFor(backgroundColor: Color): Color {
     return if ((backgroundColor.green + backgroundColor.blue + backgroundColor.red) / 3.0 > 0.6) {
         textColors.default
     } else {
-        textColors.white
+        textColors.selected
     }
 }

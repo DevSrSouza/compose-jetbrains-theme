@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 class TextColors(
     default: Color,
     disabled: Color,
-    white: Color,
+    selected: Color,
     link: Color,
     infoPanel: Color,
     infoInput: Color,
@@ -18,7 +18,7 @@ class TextColors(
 ) {
     var default by mutableStateOf(default)
     var disabled by mutableStateOf(disabled)
-    var white by mutableStateOf(white)
+    var selected by mutableStateOf(selected)
     var link by mutableStateOf(link)
     var infoPanel by mutableStateOf(infoPanel)
     var infoInput by mutableStateOf(infoInput)
@@ -28,14 +28,14 @@ class TextColors(
     fun copy(
         default: Color = this.default,
         disabled: Color = this.disabled,
-        white: Color = this.white,
+        selected: Color = this.selected,
         link: Color = this.link,
         infoPanel: Color = this.infoPanel,
         infoInput: Color = this.infoInput,
         error: Color = this.error,
         success: Color = this.success,
     ): TextColors {
-        return TextColors(default, disabled, white, link, infoPanel, infoInput, error, success)
+        return TextColors(default, disabled, selected, link, infoPanel, infoInput, error, success)
     }
 }
 

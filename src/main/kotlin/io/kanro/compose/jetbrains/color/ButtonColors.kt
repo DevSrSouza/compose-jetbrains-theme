@@ -138,7 +138,7 @@ class ButtonColors(
         val targetValue = if ((start.green + start.blue + start.red) / 3.0 > 0.6) {
             JBTheme.textColors.default
         } else {
-            JBTheme.textColors.white
+            JBTheme.textColors.selected
         }
         return rememberUpdatedState(targetValue)
     }

@@ -86,7 +86,7 @@ fun JBTheme(
         LocalIconTheme provides iconTheme,
         LocalSelectionScope provides selectionScope,
         LocalScrollbarStyle provides rememberedScrollColors.style(),
-        LocalContentColor provides textColors.default,
+        LocalContentColor provides rememberedTextColors.default,
     ) {
         ProvideTextStyle(value = typography.default, content = content)
     }

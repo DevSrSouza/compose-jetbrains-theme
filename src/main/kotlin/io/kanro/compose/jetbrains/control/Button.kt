@@ -123,7 +123,7 @@ object ButtonDefaults {
                 JBTheme.buttonColors.defaultEnd
             )
         ),
-        contentColor: Color = JBTheme.contentColorFor(JBTheme.buttonColors.defaultEnd),
+        contentColor: Color = JBTheme.textColors.selected,
         disableBorderBrush: Brush = SolidColor(JBTheme.buttonColors.borderDisabled),
         disableBackgroundBrush: Brush = SolidColor(JBTheme.buttonColors.bgDisabled),
         disabledContentColor: Color = JBTheme.textColors.disabled,
